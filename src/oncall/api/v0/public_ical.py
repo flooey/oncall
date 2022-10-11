@@ -11,6 +11,8 @@ from .user_ical import get_user_events
 from .team_ical import get_team_events
 
 
+allow_no_auth = True
+
 def on_get(req, resp, key):
     """Get ical file for a user or team's oncall calendar with no contact
     information.  Key can be requested at /api/v0/ical_key.
