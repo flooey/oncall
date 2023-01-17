@@ -1111,6 +1111,7 @@
           <option value="default" {{isSelected 'default' selected_schedule.scheduler.name}}> Default </option>
           <option value="round-robin" {{isSelected 'round-robin' selected_schedule.scheduler.name}}> Round-robin </option>
           <option value="no-skip-matching" {{isSelected 'no-skip-matching' selected_schedule.scheduler.name}}> Default (allow duplicate) </option>
+          <option value="frontliner" {{isSelected 'frontliner' selected_schedule.scheduler.name}}>Frontliner</option>
         </select>
         <div class="scheduler-type-container light">
           <!-- scheduler specific data renders here -->
@@ -1217,6 +1218,10 @@
 <!-- allow-duplicate scheduler template -->
 <script id="allow-duplicate-scheduler-template" type="text/x-handlebars-template">
   The Default (allow duplicate) scheduler uses the same algorithm as Default, but allows more than one user to be on-call at the same time for a given role. This lets you have duplicate primary events across several schedule templates.
+</script>
+
+<script id="frontliner-scheduler-template" type="text/x-handlebars-template">
+  The frontliner template is like the default but avoids scheduling people in the oncall rotation more than once every two cycles.
 </script>
 
 <!--// **********************

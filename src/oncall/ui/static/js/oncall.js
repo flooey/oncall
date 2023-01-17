@@ -1756,6 +1756,7 @@ var oncall = {
           'default': $('#default-scheduler-template').html(),
           'round-robin': $('#round-robin-scheduler-template').html(),
           'no-skip-matching': $('#allow-duplicate-scheduler-template').html(),
+          'frontliner': $('#frontliner-scheduler-template').html(),
         },
         schedulerTypeContainer: '.scheduler-type-container',
         schedulesUrl: '/api/v0/schedules/',
