@@ -47,6 +47,7 @@ def events_to_ical(events, identifier, contact=True):
                     info['contacts'][row['contact_mode']] = row['destination']
             users[username] = info
         user = users[username]
+        user_email = user['contacts'].get('email') if contact else ''
 
         # Create the event itself
         full_name = user.get('full_name', user['username'])
@@ -56,7 +57,7 @@ def events_to_ical(events, identifier, contact=True):
         cal_event.add('dtend', dt.fromtimestamp(event['end'], utc))
         cal_event.add('dtstamp', dt.utcnow())
         cal_event.add('summary',
-                      '%s %s shift: %s' % (event['team'], event['role'], full_name))
+                      '%s %s shift: %s%s' % (event['team'], event['role'], full_name, ' (%s)' % user_email if user_email else ''))
         cal_event.add('description',
                       '%s\n' % full_name +
                       ('\n'.join(['%s: %s' % (mode, dest) for mode, dest in user['contacts'].items()]) if contact else ''))

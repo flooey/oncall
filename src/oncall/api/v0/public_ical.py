@@ -32,5 +32,5 @@ def on_get(req, resp, key):
     elif type == 'team':
         events = get_team_events(name, start, roles=roles, include_subscribed=True)
 
-    resp.body = ical.events_to_ical(events, name, contact=False)
+    resp.body = ical.events_to_ical(events, name, contact=True)
     resp.set_header('Content-Type', 'text/calendar')
